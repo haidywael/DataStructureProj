@@ -4,7 +4,7 @@
 #include <algorithm>
 
 using namespace std;
-
+//correct function will take the string returned from the consistency function
 void correct (string x)
 {
     int sz;
