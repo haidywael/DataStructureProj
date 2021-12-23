@@ -221,3 +221,12 @@ string toJson(string s)
 
     return json;
 }
+
+int main()
+{
+    string xml ="<users><user><id>1</id></user><user><id>2</id></user></users>";
+
+    string y = toJson(xml);
+    cout << y << endl;
+    return 0;
+}
