@@ -5,10 +5,17 @@
 
 using namespace std;
 
+vector<vector<string>> ids;
+int a = -1;
 void format (string x)
 {
+    string x = RemoveSpace(xml);
+    vector<string> v;
+    int b = 0;
     int i=0;
     int j=0;
+    int z;
+    string id = "";
     string show;
     string sub,sb,save;
     stack<int> stk;
@@ -34,6 +41,30 @@ void format (string x)
                     word+=save;
                     show = word;
                 }    
+            
+                    if (save == "<user>")
+            {
+                while (!v.empty())
+                {
+                    v.pop_back();
+                }
+                b = 0;
+                a++;
+            }
+            if (save == "<id>")
+            {
+                z = i;
+                while (sub != "<")
+                {
+                    sub = x[z];
+                    z++;
+                    id += sub;
+                }
+                id.pop_back();
+                v.push_back(id);
+                b++;
+            }        
+            
                     else if (sb=="/")
                 {    
                         while(sub!=">")
@@ -49,6 +80,11 @@ void format (string x)
                         show =word;
                         
                 }
+            
+            if (save == "</user>")
+            {
+                ids.push_back(v);
+            }
         }
         else 
         {
@@ -65,6 +101,7 @@ void format (string x)
         word="";
         save="";
         show="";
+        id = "";
     } 
 }
 
